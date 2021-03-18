@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import userRouter from '../routes/usuario';
 import cors from 'cors';
+import db from '../database/connection';
 
 class Server {
 
@@ -19,6 +20,17 @@ class Server {
 
         //definir rutas
         this.routes();
+
+        this.dbConection();
+    }
+
+    async dbConection() {
+        try {
+            await db.authenticate();
+            console.log('Base de datos online');
+        } catch (error) {
+            throw new Error( error);
+        }
     }
 
     middlewares(){
