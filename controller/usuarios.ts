@@ -17,7 +17,7 @@ export const getUsuario = ( req: Request, res: Response ) => {
 }
 
 export const postUsuario = ( req: Request, res: Response ) => {
-    const { body } = req.params;
+    const { body } = req;
 
     res.json({
         msj: 'postUsuario',
